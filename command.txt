@@ -1,3 +1,4 @@
+# Docker
 docker ps
 docker ps -a
 
@@ -20,3 +21,31 @@ docker exec <container> <command>
 
 docker build --tag <name> .
 docker run --name <name> -d -p 80:80 -v /root/data:/data <name> # -p host 80->container80 / -v host(/r/d) -> container(/d)
+
+
+# Dockerfile
+FROM <image> # specify pre-existing image
+WORKDIR <path> # specify working directory
+COPY <host> <container> # copy <host> file to <container> WORKDIR
+COPY . . # copy in the rest of app's source code from host to image filesystem
+RUN <command> # run shell command
+
+# Docker build
+docker image build -t <tag name>
+
+# Docker run
+docker run --publish <host>:<container> --detach --name <name> <tagname>
+
+# Kubernates
+# 8.8.8.8 -> google public dns
+kubectl apply -f pod.yaml
+kubectl get pods
+kubectl logs demo
+kubectl delete -f pod.yaml
+
+# Docker swarm
+docker swarm init
+docker service create --name <name> apline:3.5 ping 8.8.8.8
+docker service ps <name>
+docker service logs <name>
+docker service rm <name>
