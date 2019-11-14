@@ -38,14 +38,21 @@ docker run --publish <host>:<container> --detach --name <name> <tagname>
 
 # Kubernates
 # 8.8.8.8 -> google public dns
-kubectl apply -f pod.yaml
+kubectl apply -f pod.yaml # Start k8s
 kubectl get pods
+kubectl get deployments # Search deployments pod
+kubectl get services # Search service (traffic network)
 kubectl logs demo
-kubectl delete -f pod.yaml
+kubectl delete -f pod.yaml # Stop k8s
 
 # Docker swarm
 docker swarm init
-docker service create --name <name> apline:3.5 ping 8.8.8.8
+docker service create --name <name> apline:3.5 ping 8.8.8.8 # Start
+docker stack deploy -c <file> <stack name>
 docker service ps <name>
+docker service ls
 docker service logs <name>
-docker service rm <name>
+docker service scale <name>=<# of repicas>
+docker service rm <name> # stop
+
+
