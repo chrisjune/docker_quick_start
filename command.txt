@@ -48,7 +48,7 @@ kubectl delete -f pod.yaml # Stop k8s
 # Docker swarm
 docker swarm init
 docker service create --name <name> apline:3.5 ping 8.8.8.8 # Start
-docker stack deploy -c <file> <stack name>
+docker stack deploy -c <file> <stack name> # Start
 docker service ps <name>
 docker service ls
 docker service logs <name>
@@ -56,3 +56,6 @@ docker service scale <name>=<# of repicas>
 docker service rm <name> # stop
 
 
+# Docker hub
+docker image tag <name>:<version> <dockerid>/<name>:<version> # add a new tag to existing image
+docker image push <dockerid>/<name>:<version>
