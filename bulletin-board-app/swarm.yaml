@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  bb-app:
+    image: bullettinboard:1.0
+    ports:
+    - "8000:8080"
+    deploy:
+      replicas: 3
